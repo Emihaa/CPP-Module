@@ -1,10 +1,8 @@
-#include <iostream>
 #include "PhoneBook.hpp"
 
 //if any of contacts are empthy, we dont add the contact
-void add_contact(PhoneBook myBook, int id)
+int add_contact(PhoneBook *myBook)
 {
-	Contact myContact;
 	std::string first_name;
 	std::string last_name;
 	std::string nickname;
@@ -12,76 +10,77 @@ void add_contact(PhoneBook myBook, int id)
 	std::string darkest_secret;
 	
 	std::cout << "First name: ";
-	std::getline(std::cin, first_name);
+	if (!std::getline(std::cin, first_name))
+		return (1);
 	std::cout << "Last name: ";
-	std::getline(std::cin, last_name);
+	if (!std::getline(std::cin, last_name))
+		return (1);
 	std::cout << "Nickname: ";
-	std::getline(std::cin, nickname);
+	if (!std::getline(std::cin, nickname))
+		return (1);
 	std::cout << "Phone number: ";
-	std::getline(std::cin, phone_number);
+	if (!std::getline(std::cin, phone_number))
+		return (1);
 	std::cout << "Darkest secret: ";
-	std::getline(std::cin, darkest_secret);
+	if (!std::getline(std::cin, darkest_secret))
+		return (1);
 	if (first_name.empty() || last_name.empty() || nickname.empty() || phone_number.empty() || darkest_secret.empty())
 	{
 		std::cout << "Incorrect input, can't have empthy slots." << std::endl;
 	}
 	else
 	{				
-		myContact = myBook.GetContact(id);
-		myContact.SetContact(first_name, last_name, nickname, phone_number, darkest_secret);
+		myBook->GetContact(myBook->GetId()).SetContact(first_name, last_name, nickname, phone_number, darkest_secret);
 	}
+	return (0);
 }
 
 //search for contact:
 //|       id|     firstname|     lastname|       nickname|
-void search_contact(PhoneBook myBook)
+int search_contact(PhoneBook *myBook)
 {
 	std::string number;
-	std::cout << "Contact index: ";
-	std::getline(std::cin, number);
-	int id = std::stoi(number);
 	
+	for (int i = 0; i < 8; i++)
+		myBook->PrintContacts(&myBook->GetContact(i), i+1);
+	std::cout << "Contact index: ";
+	if (!std::getline(std::cin, number))
+		return (1);
+	int id = std::strtol(number.data(), NULL, 10);
 	if (id < 1 || id > 8)
 	{
 		std::cout << "Invalid index, try input between 1-8" << std::endl;
-		id = 0;
 	}
 	else
 	{
-		//id--;
-		myBook.PrintContact(myBook, myBook.GetContact(id), id);
+		myBook->PrintContact(&myBook->GetContact(id - 1));
 	}
+	return (0);
 }
 
 int main(void)
 {
 	PhoneBook myBook;
-	Contact	myContact;
-	std::string add ("ADD");
-	std::string search ("SEARCH");
-	std::string exit ("EXIT");
 	std::string input;
-	myBook.SetId(0);
 
 	std::cout << "Input 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
 	while (1)
 	{
-		std::getline(std::cin, input);
-		if (add.compare(input) == 0)
+		if (!std::getline(std::cin, input))
+			return (1);
+		if (input == "ADD")
 		{
-			add_contact(myBook, myBook.GetId());
-			
-			myBook.SetId(myBook.GetId() + 1);
-			if (myBook.GetId() > 8)
-				myBook.SetId(0);
+			if (add_contact(&myBook))
+				return (1);
+			myBook.SetId();
 		}
-		else if (search.compare(input) == 0)
+		else if (input == "SEARCH")
 		{
-			search_contact(myBook);
+			if (search_contact(&myBook))
+				return (1);
 		}
-		else if (exit.compare(input) == 0)
+		else if (input == "EXIT")
 		{
-			// contacts are discarded
 			std::cout << "Exiting phonebook" << std::endl;
 			return (0);
 		}

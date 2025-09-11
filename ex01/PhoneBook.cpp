@@ -1,14 +1,19 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-Contact PhoneBook::GetContact(int i)
+PhoneBook::PhoneBook(void)
 {
-	return (_contacts[i]);
+	_id = 0;
 }
 
-void PhoneBook::SetId(int i)
+Contact& PhoneBook::GetContact(int id)
 {
-	_id = i;
+	return (_contacts[id]);
+}
+
+void PhoneBook::SetId()
+{
+	_id = (_id + 1) % 8;
 }
 
 int PhoneBook::GetId(void)
@@ -16,33 +21,37 @@ int PhoneBook::GetId(void)
 	return (_id);
 }
 
-
-void PhoneBook::Printer(std::string print)
+//redo this
+void PhoneBook::Printer(std::string string)
 {
-	int len = print.length();
+	int len = string.length();
 	if (len > 10) {
-		for (int i = 0; i < 9; i++)
-			std::cout << print[i];
+		std::cout << string.substr(0, 9);
 		std::cout << "." << "|";
 	}
 	else 
-	{
-		int k = 10 - len;
-		for (int i = 0; i < k; i++)
-		{
-			std::cout << " ";
-		}	
-		std::cout << print << "|";
+	{	
+		std::cout << std::setw(10) << string << "|";
 	}	
 }
 
-void PhoneBook::PrintContact(PhoneBook myBook, Contact myContact, int id)
+void PhoneBook::PrintContact(Contact *myContact)
 {
-	std::cout << "          " << id << "|";
-	
-	myBook.Printer(myContact.GetFirstName());
-	myBook.Printer(myContact.GetLastName());
-	myBook.Printer(myContact.GetNickName());
-	
-	std::cout << std::endl;	
+	std::cout << "First name: " << myContact->GetFirstName() << std::endl;
+	std::cout << "Last name: " << myContact->GetLastName() << std::endl;
+	std::cout << "Nickname: " << myContact->GetNickName() << std::endl;
+	std::cout << "Phonenumber: " << myContact->GetPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << myContact->GetDarkestSecret() << std::endl;
+}
+
+void PhoneBook::PrintContacts(Contact *myContact, int id)
+{		
+	if (!myContact->GetFirstName().empty())
+	{
+		std::cout << std::setw(10) << id << "|";	
+		Printer(myContact->GetFirstName());
+		Printer(myContact->GetLastName());
+		Printer(myContact->GetNickName());		
+		std::cout << std::endl;	
+	}
 }

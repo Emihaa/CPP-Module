@@ -4,6 +4,7 @@
 #include "Contact.hpp"
 #include <cstring>
 #include <iostream>
+#include <iomanip>
 
 class PhoneBook
 {
@@ -12,14 +13,14 @@ class PhoneBook
 		int _id;
 
 	public:
-		// PhoneBook(void);
-		// ~PhoneBook(void);
+		PhoneBook(void);
 	 
-		Contact GetContact(int i);
-		void SetId(int i);
+		Contact& GetContact(int id);
+		void SetId();
 		int GetId(void);
-		void PrintContact(PhoneBook myBook, Contact myContact, int id);
-		void Printer(std::string print);
+		void PrintContacts(Contact *myContact, int id);
+		void PrintContact(Contact *myContact);
+		void Printer(std::string string);
 		
 };
 
