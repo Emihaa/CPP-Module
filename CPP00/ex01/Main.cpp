@@ -1,4 +1,6 @@
 #include "PhoneBook.hpp"
+#include <exception>
+#include <new>
 
 //if any of contacts are empthy, we dont add the contact
 int add_contact(PhoneBook *myBook)
