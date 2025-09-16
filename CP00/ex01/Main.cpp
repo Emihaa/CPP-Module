@@ -28,12 +28,14 @@ int add_contact(PhoneBook *myBook)
 		return (1);
 	if (first_name.empty() || last_name.empty() || nickname.empty() || phone_number.empty() || darkest_secret.empty())
 	{
-		std::cout << "Incorrect input, can't have empthy slots." << std::endl;
+		std::cout << "Incorrect input, can't have empty slots." << std::endl;
 	}
 	else
 	{				
 		myBook->GetContact(myBook->GetId()).SetContact(first_name, last_name, nickname, phone_number, darkest_secret);
+		std::cout << "Added new contact, to index:" << myBook->GetId() + 1 << std::endl;
 	}
+	std::cout << "Input 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
 	return (0);
 }
 
@@ -42,6 +44,12 @@ int add_contact(PhoneBook *myBook)
 int search_contact(PhoneBook *myBook)
 {
 	std::string number;
+	
+	myBook->Printer("Index");
+	myBook->Printer("First name");
+	myBook->Printer("Last name");
+	myBook->Printer("Nickname");
+	std::cout << std::endl;	
 	
 	for (int i = 0; i < 8; i++)
 		myBook->PrintContacts(&myBook->GetContact(i), i+1);
@@ -57,6 +65,7 @@ int search_contact(PhoneBook *myBook)
 	{
 		myBook->PrintContact(&myBook->GetContact(id - 1));
 	}
+	std::cout << "Input 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
 	return (0);
 }
 

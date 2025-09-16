@@ -37,11 +37,18 @@ void PhoneBook::Printer(std::string string)
 
 void PhoneBook::PrintContact(Contact *myContact)
 {
-	std::cout << "First name: " << myContact->GetFirstName() << std::endl;
-	std::cout << "Last name: " << myContact->GetLastName() << std::endl;
-	std::cout << "Nickname: " << myContact->GetNickName() << std::endl;
-	std::cout << "Phonenumber: " << myContact->GetPhoneNumber() << std::endl;
-	std::cout << "Darkest secret: " << myContact->GetDarkestSecret() << std::endl;
+	if (!myContact->GetFirstName().empty())
+	{
+		std::cout << "First name: " << myContact->GetFirstName() << std::endl;
+		std::cout << "Last name: " << myContact->GetLastName() << std::endl;
+		std::cout << "Nickname: " << myContact->GetNickName() << std::endl;
+		std::cout << "Phonenumber: " << myContact->GetPhoneNumber() << std::endl;
+		std::cout << "Darkest secret: " << myContact->GetDarkestSecret() << std::endl;
+	}
+	else
+	{
+		std::cout << "Empty contact." << std::endl;
+	}
 }
 
 void PhoneBook::PrintContacts(Contact *myContact, int id)
