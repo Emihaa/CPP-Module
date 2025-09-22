@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cctype>
 
 void Megaphone(int argc, char **argv)
 {

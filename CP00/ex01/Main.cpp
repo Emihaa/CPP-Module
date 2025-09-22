@@ -1,6 +1,4 @@
 #include "PhoneBook.hpp"
-#include <exception>
-#include <new>
 
 //if any of contacts are empthy, we dont add the contact
 int add_contact(PhoneBook *myBook)
@@ -29,12 +27,15 @@ int add_contact(PhoneBook *myBook)
 	if (first_name.empty() || last_name.empty() || nickname.empty() || phone_number.empty() || darkest_secret.empty())
 	{
 		std::cout << "Incorrect input, can't have empty slots." << std::endl;
+		std::cout << "Input 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
+		return (0);
 	}
 	else
 	{				
 		myBook->GetContact(myBook->GetId()).SetContact(first_name, last_name, nickname, phone_number, darkest_secret);
 		std::cout << "Added new contact, to index:" << myBook->GetId() + 1 << std::endl;
 	}
+	myBook->SetId();
 	std::cout << "Input 'ADD', 'SEARCH' or 'EXIT'" << std::endl;
 	return (0);
 }
@@ -83,7 +84,6 @@ int main(void)
 		{
 			if (add_contact(&myBook))
 				return (1);
-			myBook.SetId();
 		}
 		else if (input == "SEARCH")
 		{
