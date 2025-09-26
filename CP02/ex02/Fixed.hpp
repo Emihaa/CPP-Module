@@ -16,11 +16,9 @@ class Fixed
 	Fixed(const int value);
 	Fixed(const float value);
 	Fixed(const Fixed& og);
+	Fixed& operator=(const Fixed& og);
 	// Deconstructor
 	~Fixed(void);
-	
-	// Overloaded Operators
-	Fixed& operator=(const Fixed& og);
 	
 	// Comparison operators
 	bool operator>(const Fixed &b) const;
