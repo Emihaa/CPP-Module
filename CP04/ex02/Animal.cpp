@@ -1,0 +1,35 @@
+#include "Animal.hpp"
+#include <string>
+
+Animal::Animal()
+{
+	std::cout << "Animal default constructor has been called." << std::endl;
+}
+
+Animal::Animal(const Animal& copy)
+{
+	*this = copy;
+	std::cout << "Animal copy constructor has been called." << std::endl;
+}
+
+Animal &Animal::operator=(const Animal& copy)
+{
+	_type = copy._type;
+	std::cout << "Animal copy has been called." << std::endl;
+	return (*this);
+}
+
+Animal::~Animal()
+{
+	std::cout << "Animal destructor has been called." << std::endl;
+}
+
+std::string Animal::getType() const
+{
+	return(_type);
+}
+
+void Animal::setType(std::string type)
+{
+	_type = type;
+}
