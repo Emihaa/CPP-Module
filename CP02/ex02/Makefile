@@ -1,6 +1,6 @@
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++20
-NAME = fixed_point00
+NAME = fixed_point02
 SRC = main.cpp Fixed.cpp
 OBJS = $(SRC:.cpp=.o)
 

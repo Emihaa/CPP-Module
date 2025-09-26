@@ -21,18 +21,18 @@ Fixed &Fixed::operator=(const Fixed& og)
 Fixed::Fixed (const int value)
 {
 	std::cout << "Int constructor called" << std::endl;
-	_fixed_point = value;
+	_fixed_point = value << _frac_bits;
 }
 
 Fixed::Fixed (const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
-	//these assign the values
+	_fixed_point = roundf(value * (1 << _frac_bits));
 }
 
 std::ostream &operator<<(std::ostream &o, const Fixed &og)
 {
-	o << og.toFloat() << std::endl;
+	o << og.toFloat();
 	return(o);
 }
 
@@ -44,11 +44,11 @@ Fixed::~Fixed(void)
 float Fixed::toFloat (void) const
 {
 	//this converts the fixed-point value to an floating point value
-	return (0);
+	return ((float)_fixed_point / (1 << _frac_bits));
 }
 
 int Fixed::toInt(void) const
 {
 	//this converst the fixed-point value to an integer value
-	return (0);
+	return (_fixed_point >> 8);
 }
