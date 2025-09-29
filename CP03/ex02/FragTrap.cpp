@@ -5,13 +5,16 @@ FragTrap::FragTrap() : ClapTrap()
 	_hit_points = 100;
 	_attack_dmg = 30;
 	_energy_points = 100;
-	std::cout << "Default FragTrap constructor called!" << std::endl;
+	std::cout << "Default " << _name << " FragTrap constructor called!" << std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& copy)
 {
-	*this = copy;
-	std::cout << "FragTrap Copy constructor called!" << std::endl;
+	_name = copy._name;
+	_attack_dmg = copy._attack_dmg;
+	_energy_points = copy._energy_points;
+	_hit_points = copy._hit_points;
+	std::cout << "FragTrap " << _name << " copy constructor called!" << std::endl;
 }
 
 FragTrap &FragTrap::operator=(const FragTrap& copy)
@@ -20,7 +23,7 @@ FragTrap &FragTrap::operator=(const FragTrap& copy)
 	_attack_dmg = copy._attack_dmg;
 	_energy_points = copy._energy_points;
 	_hit_points = copy._hit_points;
-	std::cout << "FragTrap copy operator constructor called!" << std::endl;
+	std::cout << "FragTrap " << _name << " copy operator constructor called!" << std::endl;
 	return (*this);
 }
 

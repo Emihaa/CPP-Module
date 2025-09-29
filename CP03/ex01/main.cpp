@@ -5,7 +5,6 @@ int main (void)
 {
 	ClapTrap Pekka("Pekka");
 	std::cout << std::endl;
-	//TODO: maybe check why it doesnt only call the operator= cosntructor?? Luka knows
 	ClapTrap Timo = Pekka;
 	std::cout << std::endl;
 	ClapTrap Jukka(Pekka);

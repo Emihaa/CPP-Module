@@ -1,5 +1,10 @@
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : _name(""), _hit_points(10), _energy_points(10), _attack_dmg(0) 
+{
+	std::cout << "ClapTrap default constuctor called for " << _name << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name)
 {
 	_name = name;
@@ -11,7 +16,10 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::ClapTrap(const ClapTrap& copy)
 {
-	*this = copy;
+	_name = copy._name;
+	_attack_dmg = copy._attack_dmg;
+	_energy_points = copy._energy_points;
+	_hit_points = copy._hit_points;
 	std::cout << "ClapTrap copy constructor called for " << _name << std::endl;
 }
 
@@ -47,7 +55,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (_hit_points > 0)
 	{
-		_hit_points -= amount;
+		_hit_points -= (amount > _hit_points ? _hit_points : amount);
 		std::cout << "ClapTrap " << _name << " took " << amount << " of dmg!" << std::endl;
 	}
 	else
