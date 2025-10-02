@@ -10,8 +10,8 @@ class Fixed
 	
 	public:
 	Fixed(void);
-	Fixed(const Fixed& original);
-	Fixed& operator=(const Fixed& original);
+	Fixed(const Fixed& copy);
+	Fixed& operator=(const Fixed& copy);
 	~Fixed(void);
 	
 	int getRawBits( void ) const;

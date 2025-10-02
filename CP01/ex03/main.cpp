@@ -3,6 +3,8 @@
 #include "HumanA.hpp"
 #include "HumanB.hpp"
 
+// pointer can have a null so humanB should have a pointer to a weapon
+// reference can't have null so there always has to have a weapon for humanA 
 int main()
 {
 	{

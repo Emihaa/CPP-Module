@@ -6,22 +6,23 @@ Fixed::Fixed(void)
  	_fixed_point = 0;	
 }
 
-Fixed::Fixed(const Fixed& og) : _fixed_point(og._fixed_point)
+Fixed::Fixed(const Fixed& copy) : _fixed_point(copy._fixed_point)
 {
 	std::cout << "Copy constructor called" << std::endl; 
 }
 
-Fixed &Fixed::operator=(const Fixed& og)
-{
-	std::cout << "Copy assignment operator called" << std::endl; 
-	_fixed_point = og._fixed_point;
-	return (*this);
-}
 
 Fixed::Fixed (const int value)
 {
 	std::cout << "Int constructor called" << std::endl;
 	_fixed_point = value << _frac_bits;
+}
+
+Fixed &Fixed::operator=(const Fixed& copy)
+{
+	std::cout << "Copy assignment operator called" << std::endl; 
+	_fixed_point = copy._fixed_point;
+	return (*this);
 }
 
 Fixed::Fixed (const float value)
@@ -30,9 +31,9 @@ Fixed::Fixed (const float value)
 	_fixed_point = roundf(value * (1 << _frac_bits));
 }
 
-std::ostream &operator<<(std::ostream &o, const Fixed &og)
+std::ostream &operator<<(std::ostream &o, const Fixed &copy)
 {
-	o << og.toFloat();
+	o << copy.toFloat();
 	return(o);
 }
 

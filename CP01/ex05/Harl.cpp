@@ -1,5 +1,4 @@
 #include "Harl.hpp"
-#include <cstddef>
 
 Harl::Harl(void)
 {

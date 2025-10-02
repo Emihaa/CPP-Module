@@ -1,21 +1,21 @@
 #include "WrongAnimal.hpp"
 #include <string>
 
-WrongAnimal::WrongAnimal()
+WrongAnimal::WrongAnimal() : _type("")
 {
 	std::cout << "WrongAnimal default constructor has been called." << std::endl;	
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& copy)
 {
-	*this = copy;
+	_type = copy._type;
 	std::cout << "WrongAnimal copy constructor has been called." << std::endl;		
 }
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal& copy)
 {
 	_type = copy._type;
-	std::cout << "WrongAnimal copy has been called." << std::endl;		
+	std::cout << "WrongAnimal copy assignment has been called." << std::endl;		
 	return (*this);
 }
 

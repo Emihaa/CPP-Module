@@ -11,7 +11,7 @@ class Animal
 	Animal();
 	Animal(const Animal& copy);
 	Animal &operator=(const Animal& copy);
-	~Animal();
+	virtual ~Animal();
 	
 	void setType(std::string type);
 	std::string getType() const;

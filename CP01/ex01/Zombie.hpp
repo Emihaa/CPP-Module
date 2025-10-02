@@ -1,7 +1,6 @@
 #ifndef ZOMBIE_H
 #define ZOMBIE_H
 
-#include <string>
 #include <iostream>
 
 class Zombie

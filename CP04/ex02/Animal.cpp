@@ -1,21 +1,21 @@
 #include "Animal.hpp"
 #include <string>
 
-Animal::Animal()
+Animal::Animal(): _type("")
 {
 	std::cout << "Animal default constructor has been called." << std::endl;
 }
 
 Animal::Animal(const Animal& copy)
 {
-	*this = copy;
+	_type = copy._type;
 	std::cout << "Animal copy constructor has been called." << std::endl;
 }
 
 Animal &Animal::operator=(const Animal& copy)
 {
 	_type = copy._type;
-	std::cout << "Animal copy has been called." << std::endl;
+	std::cout << "Animal copy assignment has been called." << std::endl;
 	return (*this);
 }
 

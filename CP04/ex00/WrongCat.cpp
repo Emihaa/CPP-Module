@@ -9,14 +9,15 @@ WrongCat::WrongCat() : WrongAnimal()
 
 WrongCat::WrongCat(const WrongCat& copy)
 {
-	*this = copy;
+	_type = copy._type;
 	std::cout << "WrongCat copy constructor has been called." << std::endl;		
 }
 
 WrongCat &WrongCat::operator=(const WrongCat& copy)
 {
-	_type = copy._type;
-	std::cout << "WrongCat copy has been called." << std::endl;		
+	if (this != &copy)
+		_type = copy._type;
+	std::cout << "WrongCat copy assignment has been called." << std::endl;		
 	return (*this);
 }
 

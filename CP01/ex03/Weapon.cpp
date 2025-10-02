@@ -1,6 +1,4 @@
 #include "Weapon.hpp"
-#include <ostream>
-
 
 Weapon::Weapon(std::string type)
 {

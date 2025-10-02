@@ -2,7 +2,7 @@
 
 //do arg take in two values and then showcase all functions below where it runs out
 // all the tests
-int main(void) {
+int main(void) {	
 	Fixed a = 4;
 	Fixed b(6.234f);
 	

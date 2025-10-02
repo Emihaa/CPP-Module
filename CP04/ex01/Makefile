@@ -1,5 +1,5 @@
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++20
+CXXFLAGS = -Wall -Werror -Wextra -std=c++20 -g
 NAME = Animal
 SRC = main.cpp Dog.cpp Cat.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJS = $(SRC:.cpp=.o)

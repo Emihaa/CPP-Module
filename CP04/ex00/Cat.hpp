@@ -10,5 +10,5 @@ class Cat : public Animal
 	Cat &operator=(const Cat& copy);
 	~Cat();
 	
-	void makeSound() const;
+	void makeSound() const override;
 };

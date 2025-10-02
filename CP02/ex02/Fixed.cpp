@@ -2,13 +2,11 @@
 
 Fixed::Fixed(void)
 {
-	//std::cout << "Default constructor called" << std::endl; 
  	_fixed_point = 0;	
 }
 
 Fixed::Fixed(const Fixed& og) : _fixed_point(og._fixed_point)
 {
-	//std::cout << "Copy constructor called" << std::endl; 
 }
 
 Fixed &Fixed::operator=(const Fixed& og)
@@ -92,7 +90,6 @@ Fixed Fixed::operator*(const Fixed &b) const
 	return (c);
 }
 
-//TODO: check if this is correct with somebody
 Fixed Fixed::operator/(const Fixed &b) const
 {
 	Fixed c;
@@ -102,7 +99,7 @@ Fixed Fixed::operator/(const Fixed &b) const
 
 Fixed &Fixed::operator++()
 {
-	this->setRawBits(_fixed_point + (1 << _frac_bits));
+	_fixed_point++;
 	return (*this);
 }
 
@@ -158,12 +155,10 @@ int Fixed::toInt(void) const
 
 int Fixed::getRawBits(void) const
 {
-	//std::cout << "getRawBits member function called" << std::endl; 
 	return (_fixed_point);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	//std::cout << "setRawBits member function called" << std::endl; 
 	_fixed_point = raw;
 }

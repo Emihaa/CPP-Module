@@ -14,8 +14,8 @@ class Fixed
 	Fixed(void);
 	Fixed(const int value);
 	Fixed(const float value);
-	Fixed(const Fixed& og);
-	Fixed& operator=(const Fixed& og);
+	Fixed(const Fixed& copy);
+	Fixed& operator=(const Fixed& copy);
 	~Fixed(void);
 	
 	float toFloat( void ) const;
@@ -23,4 +23,4 @@ class Fixed
 	
 };
 
-std::ostream& operator<<(std::ostream &o, const Fixed &og);
+std::ostream& operator<<(std::ostream &o, const Fixed &copy);
