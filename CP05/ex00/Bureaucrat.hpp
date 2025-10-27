@@ -2,8 +2,9 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
 
-class Bureaucrat
+class Bureaucrat : public std::exception
 {
 	private:
 	const std::string _name;
@@ -15,16 +16,24 @@ class Bureaucrat
 	Bureaucrat &operator=(const Bureaucrat& og);
 	~Bureaucrat();
 	
-	Bureaucrat(const std::string name, int rank);
+	Bureaucrat(const std::string name, int grade);
 	
 	void decrementGrade();
 	void incrementGrade();
 	
-	void getName() const;
-	void getGrade() const;
+	std::string getName() const;
+	int getGrade() const;
 	
-	std::string setName();
-	int setGrade();
+	Bureaucrat(int grade) : GradeTooHighException(grade);
+	
 };
 
+std::ostream& operator<<(std::ostream &out, const Bureaucrat &c);
+
 //overload << insertion function 
+// 
+// 
+// So we create an expection if the grade isnt a value between 1-10
+// either a: Bureaucrat::GradeTooHighException
+// or
+// Bureaucrat::GradeTooLowException
