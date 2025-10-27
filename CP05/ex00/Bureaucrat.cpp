@@ -44,9 +44,9 @@ void Bureaucrat::incrementGrade()
 	try {
 		_grade += 1;
 		if (_grade > 150)
-			throw _grade;
+			throw GradeTooHighException();
 		if (_grade < 1)
-			throw _grade; //either GradeTooLow or HighException
+			throw GradeTooLowException(); //either GradeTooLow or HighException
 	}
 	catch (const std::out_of_range& error) 
 	{

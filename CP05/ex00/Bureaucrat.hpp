@@ -4,7 +4,7 @@
 #include <string>
 #include <exception>
 
-class Bureaucrat : public std::exception
+class Bureaucrat
 {
 	private:
 	const std::string _name;
@@ -24,7 +24,17 @@ class Bureaucrat : public std::exception
 	std::string getName() const;
 	int getGrade() const;
 	
-	Bureaucrat(int grade) : GradeTooHighException(grade);
+	class GradeTooHighException : public std::exception
+	{
+		public:
+			const char* what() const noexcept override;
+	};
+	
+	class GradeTooLowException : public std::exception
+	{
+		public:
+			const char* what() const noexcept override;
+	};
 	
 };
 
