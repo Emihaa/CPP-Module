@@ -22,7 +22,7 @@ class Bureaucrat
 	void incrementGrade();
 	
 	std::string getName() const;
-	int getGrade() const;
+	int 		getGrade() const;
 	
 	class GradeTooHighException : public std::exception
 	{
@@ -39,11 +39,3 @@ class Bureaucrat
 };
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat &c);
-
-//overload << insertion function 
-// 
-// 
-// So we create an expection if the grade isnt a value between 1-10
-// either a: Bureaucrat::GradeTooHighException
-// or
-// Bureaucrat::GradeTooLowException
